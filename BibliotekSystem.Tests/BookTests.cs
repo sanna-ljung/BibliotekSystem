@@ -48,5 +48,32 @@ namespace BibliotekSystem.Tests
             // Assert
             Assert.False(book.IsLoaned);
         }
+        [Fact]
+        public void Constructor_ShouldInitializePropertiesCorrectly()
+        {
+            // Arrange
+            string title = "The Pragmatic Programmer";
+            string author = "Andrew Hunt and David Thomas";
+            string isbn = "ISBN123456";
+            // Act
+            var book = new Book(title, author, isbn);
+            // Assert
+            Assert.Equal(title, book.Title);
+            Assert.Equal(author, book.Author);
+            Assert.Equal(isbn, book.ISBN);
+            Assert.False(book.IsLoaned);
+        }
+        [Fact]
+        public void Constructor_ShouldSetIsLoanedToFalseByDefault()
+        {
+            // Arrange
+            string title = "Design Patterns";
+            string author = "Erich Gamma et al.";
+            string isbn = "ISBN7891011";
+            // Act
+            var book = new Book(title, author, isbn);
+            // Assert
+            Assert.False(book.IsLoaned);
+        }
     }
 }

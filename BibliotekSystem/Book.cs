@@ -7,7 +7,7 @@ public class Book
     public string ISBN { get; set; }
     public bool IsLoaned { get; set; }
 
-    public Book(string title, string author, string isbn)
+    public Book(string title, string author, string isbn, bool isLoaned = false)
     {
         Title = title;
         Author = author;

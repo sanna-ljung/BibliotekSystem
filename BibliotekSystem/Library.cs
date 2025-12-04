@@ -20,19 +20,26 @@ public class Library
             b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
     }
 
-    public void LoanBook(string isbn)
+    public List<Book> GetAllBooks()
     {
-        var book = Books.FirstOrDefault(b => b.ISBN == isbn);
+        return Books;
+    }
+
+    public Book LoanBook(string isbn)
+    {
+        var book = Books.FirstOrDefault(b => b.ISBN == isbn && !b.IsLoaned);
         if (book == null)
             throw new InvalidOperationException("Boken hittades inte.");
         book.Loan();
+        return book;
     }
 
-    public void ReturnBook(string isbn)
+    public Book ReturnBook(string isbn)
     {
         var book = Books.FirstOrDefault(b => b.ISBN == isbn);
         if (book == null)
             throw new InvalidOperationException("Boken hittades inte.");
         book.Return();
+        return book;
     }
 }
